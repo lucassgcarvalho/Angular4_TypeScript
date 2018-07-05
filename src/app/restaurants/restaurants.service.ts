@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 export class RestaurantService {
   constructor(private http: Http) {}
 
-  restaurant(): Observable<Restaurant[]> {
+  restaurant (): Observable<Restaurant[]> {
     return this.http
       .get(`${MET_API}/restaurants`)
       .map(response => response.json());
