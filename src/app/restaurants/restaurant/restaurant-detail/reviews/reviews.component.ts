@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { RestaurantService } from '../restaurants.service';
 import { Observable } from 'rxjs/Observable';
+import { RestaurantService } from '../../../restaurants.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'mt-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  selector: 'mt-reviews',
+  templateUrl: './reviews.component.html',
+  styleUrls: ['./reviews.component.css']
 })
-export class MenuComponent implements OnInit {
+export class ReviewsComponent implements OnInit {
 
-  menuItens: Observable<any>;
+  reviews: Observable<any>;
 
   constructor(
     private restaurantService: RestaurantService,
@@ -18,9 +18,8 @@ export class MenuComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.menuItens = this.restaurantService.menuRestaurants(
+    this.reviews = this.restaurantService.reviewsRestaurants(
       this.activatedRoute.parent.snapshot.params['id']
     );
   }
-
 }
