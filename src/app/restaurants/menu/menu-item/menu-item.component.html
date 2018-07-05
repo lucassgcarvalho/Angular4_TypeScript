@@ -6,8 +6,8 @@
   <div class="menu-item-info-box-content">
     <span class="menu-item-info-box-text">{{menuItem.id}}</span>
     <span class="menu-item-info-box-detail">{{menuItem.description}}</span>
-    <span class="menu-item-info-box-price">{{menuItem.price}}</span>
-    <a class="">
+    <span class="menu-item-info-box-price">{{menuItem.price | currency: 'BRL': true}}</span>
+    <a (click)="addCartShopEvent()" class="">
       <i class="fa fa-plus-circle"></i> Adicionar</a>
   </div>
   <!-- /.info-box-content -->

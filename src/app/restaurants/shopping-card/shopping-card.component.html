@@ -2,46 +2,51 @@
 <div class="box box-solid">
   <div class="box-header">
     <i class="fa fa-shopping-cart"></i>
-
     <h3 class="box-title">Carrinho</h3>
   </div>
   <!-- /.box-header -->
+
   <div class="box-body">
-    <div class="table-responsive">
-      <table class="table">
-        <tbody>
-          <tr>
-            <th style="width:60%">Cerveja:</th>
+    <div *ngIf="getItems().length">
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let itemVar of getItems()">
+              <th>({{itemVar.quantity}} x) {{itemVar.menuItem.name}}</th>
+              <td class="text-right ">
+                <a (click)="removeItem(itemVar)" class='btn btn-sm danger'>
+                  <i class="fa fa-remove"></i>
+                </a>
+              </td>
+              <td class="text-right">{{itemVar.value() | currency: 'BRL': true }}</td>
+            </tr>
 
-            <td class="text-right">R$ 6,00</td>
+            <!-- <tr>
+              <th>Frete:</th>
+                <td class="text-right">R$ 8,00</td>
+              </tr> -->
 
-          </tr>
-          <tr>
-            <th>Pork Burger</th>
+            <tr>
+              <th>Total:</th>
 
-            <td class="text-right">R$ 22,00</td>
-          </tr>
-          <tr>
-            <th>Frete:</th>
-
-            <td class="text-right">R$ 8,00</td>
-          </tr>
-          <tr>
-            <th>Total:</th>
-
-            <td class="text-right">R$ 80,90</td>
-          </tr>
-        </tbody>
-      </table>
+              <td class="text-right">{{getTotal() | currency: 'BRL': true}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+
   <div class="box-footer">
-    <div class="pull-right">
-      <button type="button" class="btn btn-danger">
-        <i class="fa fa-trash"></i> Limpar</button>
-      <a href="order.html" class="btn btn-success">
-        <i class="fa fa-credit-card"></i> Fechar Pedido</a>
+    <div *ngIf="getItems().length">
+      <div class="pull-right">
+        <button type="button" class="btn btn-danger" (click)="clear()">
+          <i class="fa fa-trash"></i> Limpar</button>
+        <a href="order.html" class="btn btn-success">
+          <i class="fa fa-credit-card"></i> Fechar Pedido</a>
+      </div>
     </div>
   </div>
+
 </div>
 <!-- FIM DO CARRINHO -->
