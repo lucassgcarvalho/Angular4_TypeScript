@@ -4,6 +4,9 @@
 
 <section class="content">
   <section class="invoice">
+
+  {{form.value | json}}
+
     <form #form="ngForm" novalidate>
       <div class="row">
         <div class="col-xs-12">
@@ -133,7 +136,7 @@
           <p class="lead">Formas de Pagamento:</p>
 
           <div class="form-group">
-            <mt-radio [options]="paymentOptions" ></mt-radio>
+            <mt-radio [options]="paymentOptions" name="paymentOption" ngModel ></mt-radio>
           </div>
 
         </div>
