@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ShoppingCardService } from './shopping-card.service';
-import { CartItem } from './shopping-card-item.model';
+import { ShoppingCartService } from './shopping-cart.service';
+import { CartItem } from './shopping-cart-item.model';
 
 @Component({
   selector: 'mt-shopping-card',
-  templateUrl: './shopping-card.component.html',
-  styleUrls: ['./shopping-card.component.css']
+  templateUrl: './shopping-cart.component.html',
+  styleUrls: ['./shopping-cart.component.css']
 })
-export class ShoppingCardComponent implements OnInit {
+export class ShoppingCartComponent implements OnInit {
 
-  constructor(private shoppingCardService: ShoppingCardService) { }
+  constructor(private shoppingCardService: ShoppingCartService) { }
 
   ngOnInit() {
   }
 
-  getItems(): CartItem[] {
+  getCartItems(): CartItem[] {
     return this.shoppingCardService.items;
   }
 
@@ -33,6 +33,5 @@ export class ShoppingCardComponent implements OnInit {
   getTotal(): number {
     return this.shoppingCardService.total();
   }
-
 
 }

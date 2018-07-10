@@ -7,11 +7,11 @@
   <!-- /.box-header -->
 
   <div class="box-body">
-    <div *ngIf="getItems().length">
+    <div *ngIf="getCartItems().length">
       <div class="table-responsive">
         <table class="table">
           <tbody>
-            <tr *ngFor="let itemVar of getItems()">
+            <tr *ngFor="let itemVar of getCartItems()">
               <th>({{itemVar.quantity}} x) {{itemVar.menuItem.name}}</th>
               <td class="text-right ">
                 <a (click)="removeItem(itemVar)" class='btn btn-sm danger'>
@@ -38,7 +38,7 @@
   </div>
 
   <div class="box-footer">
-    <div *ngIf="getItems().length">
+    <div *ngIf="getCartItems().length">
       <div class="pull-right">
         <button type="button" class="btn btn-danger" (click)="clear()">
           <i class="fa fa-trash"></i> Limpar</button>

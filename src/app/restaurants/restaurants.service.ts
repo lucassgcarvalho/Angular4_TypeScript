@@ -1,5 +1,5 @@
 import { Http } from '@angular/http';
-import { MET_API } from './../app.api';
+import { MET_API } from '../app.api';
 import { Restaurant } from './restaurant/restaurant.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';

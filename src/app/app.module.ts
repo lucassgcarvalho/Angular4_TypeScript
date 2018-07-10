@@ -14,14 +14,16 @@ import { RestaurantComponent } from './restaurants/restaurant/restaurant.compone
 import { RestaurantService } from './restaurants/restaurants.service';
 import { RestaurantDetailComponent } from './restaurants/restaurant/restaurant-detail/restaurant-detail.component';
 import { MenuComponent } from './restaurants/menu/menu.component';
-import { ShoppingCardComponent } from './restaurants/shopping-card/shopping-card.component';
 import { MenuItemComponent } from './restaurants/menu/menu-item/menu-item.component';
 import { ReviewsComponent } from './restaurants/restaurant/restaurant-detail/reviews/reviews.component';
-import { ShoppingCardService } from './restaurants/shopping-card/shopping-card.service';
 import { OrderComponent } from './order/order.component';
 import { InputComponent } from './shared/input/input.component';
 import { RadioComponent } from './shared/radio/radio.component';
 import { OrderItemsComponent } from './order/order-items/order-items.component';
+import { ShoppingCartComponent } from './restaurants/shopping-cart/shopping-cart.component';
+import { ShoppingCartService } from './restaurants/shopping-cart/shopping-cart.service';
+import { OrderService } from './order/order.service';
+import { DeliveryCostsComponent } from './order/delivery-costs/delivery-costs.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +35,14 @@ import { OrderItemsComponent } from './order/order-items/order-items.component';
     RestaurantComponent,
     RestaurantDetailComponent,
     MenuComponent,
-    ShoppingCardComponent,
+    ShoppingCartComponent,
     MenuItemComponent,
     ReviewsComponent,
     OrderComponent,
     InputComponent,
     RadioComponent,
-    OrderItemsComponent
+    OrderItemsComponent,
+    DeliveryCostsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,7 @@ import { OrderItemsComponent } from './order/order-items/order-items.component';
     FormsModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [RestaurantService, ShoppingCardService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [RestaurantService, ShoppingCartService, OrderService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
