@@ -5,8 +5,6 @@
 <section class="content">
   <section class="invoice">
 
-    {{form.value | json}}
-
     <form #form="ngForm" novalidate>
       <div class="row">
         <div class="col-xs-12">
@@ -63,7 +61,7 @@
           </div>
         </div>
 
-        <mt-delivery-costs [delivery]="delivery" [itemsValues]="getItemsValue()" ></mt-delivery-costs>
+        <mt-delivery-costs [delivery]="deliveryShippMock" [itemsValues]="getItemsValue()" ></mt-delivery-costs>
       </div>
 
     </form>

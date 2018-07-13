@@ -1,17 +1,19 @@
 import { RadioOption } from '../shared/radio/radio.module';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { CartItem } from '../restaurants/shopping-cart/shopping-cart-item.model';
 import { OrderService } from './order.service';
 import { Order, OrderItem } from './order.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mt-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
+@Injectable()
 export class OrderComponent implements OnInit {
 
-  delivery: number = 7;
+  deliveryShippMock: number = 7;
 
   @Input() address: string;
   @Input() number: string;
@@ -23,7 +25,7 @@ export class OrderComponent implements OnInit {
     { label: 'Vale Refeição', value: 'REF' }
   ];
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -51,7 +53,8 @@ export class OrderComponent implements OnInit {
   checkOrder(order: Order) {
     order.orderItems = this.getCartItems().map((item: CartItem) => new OrderItem(item.quantity, item.menuItem.id));
     this.orderService.checkOrder(order).subscribe((orderId: string) => {
-      console.log(`Compra concluída ${orderId}`);
+      this.router.navigate(['/order-summary']);
+      // console.log(`Compra concluída ${orderId}`);
       this.orderService.clear();
     } );
   }
