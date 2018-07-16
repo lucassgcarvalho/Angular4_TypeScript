@@ -1,0 +1,5 @@
+<i *ngFor="let rateVar of rates"  class="fa"
+  [class.fa-star]="rateVar <= rate" [class.fa-star-o]="rateVar > rate"
+  (click)="setRating(rateVar)"
+  (mouseenter)="mouseOver($event.type, rateVar)"
+  (mouseleave)="mouseOver($event.type, rateVar)"></i>

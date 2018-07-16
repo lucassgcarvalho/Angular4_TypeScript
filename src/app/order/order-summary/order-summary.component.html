@@ -10,19 +10,21 @@
     <p>
       <b>Avalie</b> sua experiência:</p>
     <p>
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
+      <mt-rating (ratedEventEmitter)="ratedEventEmitter = true" ></mt-rating>
     </p>
+    <div [hidden]="!ratedEventEmitter" >
+      <p>
+        Obrigado pela sua avaliação!
+      </p>
+    </div>
     <br/>
     <br/>
     <div>
-        <p>
-          Retornar para página inicial <a [routerLink]="['/restaurants']">aqui</a>
-        </p>
-      </div>
+      <p>
+        Retornar para página inicial
+        <a [routerLink]="['/']">aqui</a>
+      </p>
+    </div>
   </div>
 
 
