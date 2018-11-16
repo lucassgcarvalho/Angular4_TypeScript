@@ -13,6 +13,11 @@
           <tbody>
             <tr *ngFor="let itemVar of getCartItems()">
               <th>({{itemVar.quantity}} x) {{itemVar.menuItem.name}}</th>
+               <th>
+                  <a (click)="removeOneItem(itemVar)" class='btn btn-sm danger'>
+                    <i class="fa fa-minus"></i>
+                  </a>
+              </th>
               <td class="text-right ">
                 <a (click)="removeItem(itemVar)" class='btn btn-sm danger'>
                   <i class="fa fa-remove"></i>
@@ -35,6 +40,11 @@
         </table>
       </div>
     </div>
+
+    <div *ngIf="!getCartItems().length" class="text-center">
+      <p class="fa fa-cart-arrow-down text-center">Carrinho vazio.</p>
+    </div>
+
   </div>
 
   <div class="box-footer">
@@ -43,7 +53,7 @@
         <button type="button" class="btn btn-danger" (click)="clear()">
           <i class="fa fa-trash"></i> Limpar</button>
         <a [routerLink]="['/order']" class="btn btn-success">
-          <i  class="fa fa-credit-card"></i> Fechar Pedido</a>
+          <i class="fa fa-credit-card"></i> Fechar Pedido</a>
       </div>
     </div>
   </div>

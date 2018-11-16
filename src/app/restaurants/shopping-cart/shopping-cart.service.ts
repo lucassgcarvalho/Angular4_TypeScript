@@ -9,7 +9,7 @@ export class ShoppingCartService {
   items: CartItem[] = [];
 
 
-  constructor(private notificationService: NotificationService) {}
+  constructor(private notificationService: NotificationService) { }
 
   clear() {
     this.items = [];
@@ -29,6 +29,18 @@ export class ShoppingCartService {
     this.items.splice(this.items.indexOf(item), 1);
     this.notificationService.notify(`Você removeu o item ${item.menuItem.name}`);
   }
+
+  removeOneItem(item: CartItem) {
+    let itemFound = this.items.find((itemParam) => itemParam.menuItem.id === item.menuItem.id);
+    itemFound.quantity--;
+    this.notificationService.notify(`Você removeu um item ${item.menuItem.name} da Lista.`);
+
+    if (itemFound.quantity <=  0) {
+      this.removeItem(itemFound);
+    }
+  }
+
+
 
   total(): number {
     return this.items.map(paramItemMap => paramItemMap.valueQuantity())
